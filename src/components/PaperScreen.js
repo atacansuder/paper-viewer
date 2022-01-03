@@ -15,6 +15,10 @@ function PaperScreen() {
       method: "mixed",
       questions:
         "Where, when and how to present security warnings to developers?",
+      participants: [
+        { id: 0, amount: 14, type: "professional software developers" },
+        { id: 1, amount: 12, type: "students" },
+      ],
       studies: [{ id: 0 }, { id: 1 }],
       dataCollectionMethods: [
         "semi-structured interviews",
@@ -42,6 +46,11 @@ function PaperScreen() {
       method: "Qualitative",
       questions:
         "In order to allow for distributed recruitment of IT professionals for security user studies, the researchers designed Developer Observatory, a browser-based virtual laboratory platform that enables controlled programming experiments while retaining most of the observational power of lab studies. In this paper, the researchers share their experiences using this platform.",
+
+      participants: [
+        { id: 0, amount: 305, type: "professional software developers" },
+        { id: 1, amount: 102, type: "students" },
+      ],
       studies: [{ id: 0 }],
       dataCollectionMethods: ["controlled experiments", "questionnaire"],
     },
