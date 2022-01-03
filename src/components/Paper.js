@@ -2,35 +2,39 @@ import React from "react";
 
 import "./Paper.css";
 
-function Paper() {
+function Paper(props) {
+  const data = props.paperdata;
+  console.log(data);
+
+  function joinArray(x) {
+    return x.join(", ");
+  }
+
   return (
     <div className="Paper">
-      <div className="Paper-title">
-        One Size Does Not Fit All: A Grounded Theory and Online Survey Study of
-        Developer Preferences for Security Warning Types
+      <div className="Paper-title">{data.title}</div>
+      <div className="Paper-authors">
+        {joinArray(data.authors) + " " + data.year}
       </div>
-      <div className="Paper-authors">Danilova et al, 2020</div>
       <div className="Paper-attributes">
         <div className="Paper-attribute">
           <p className="Paper-attribute-title">Research method:&nbsp;</p>
-          <p className="Paper-attribute-description">Mixed</p>
+          <p className="Paper-attribute-description">{data.method}</p>
         </div>
         <div className="Paper-attribute">
           <p className="Paper-attribute-title">Research questions:&nbsp;</p>
-          <p className="Paper-attribute-description">
-            Where, when and how to present security warnings to developers?
-          </p>
+          <p className="Paper-attribute-description">{data.questions}</p>
         </div>
         <div className="Paper-attribute">
           <p className="Paper-attribute-title">No. of studies:&nbsp;</p>
-          <p className="Paper-attribute-description">2</p>
+          <p className="Paper-attribute-description">{data.studies.length}</p>
         </div>
         <div className="Paper-attribute">
           <p className="Paper-attribute-title">
             Data collection methods:&nbsp;
           </p>
           <p className="Paper-attribute-description">
-            Semi-structured interviews, focus group, online survey
+            {joinArray(data.dataCollectionMethods)}
           </p>
         </div>
       </div>

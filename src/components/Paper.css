@@ -66,12 +66,16 @@
 .Paper-attribute-title {
   font-weight: bold;
   width: 25%;
+  white-space: nowrap;
 }
 
 .Paper-attribute-description {
-  width: auto;
-  max-width: 75%;
-  padding-right: 0px;
+  width: 75%;
+  margin-right: 5px;
+}
+
+.Paper-attribute-description:first-letter {
+  text-transform: capitalize;
 }
 
 .Paper-links {
