@@ -2,16 +2,24 @@ import React from "react";
 
 import "./Paper.css";
 
+const authors = require("../data/authors.json");
+
 function Paper(props) {
   const data = props.paperdata;
-  console.log(data);
 
   function joinArray(x) {
     return x.join(", ");
   }
 
+  function getAuthors(arr) {
+    const result = [];
+    for (var i = 0; i < arr.length; i++) {
+      result.push(authors[i].name);
+    }
+    return joinArray(result);
+  }
+
   function calculateParticipants(p) {
-    console.log(p);
     var result = 0;
     for (var i = 0; i < p.length; i++) {
       result += p[i].amount;
@@ -23,7 +31,7 @@ function Paper(props) {
     <div className="Paper">
       <div className="Paper-title">{data.title}</div>
       <div className="Paper-authors">
-        {joinArray(data.authors) + " " + data.year}
+        {getAuthors(data.authors) + " " + data.year}
       </div>
       <div className="Paper-attributes">
         <div className="Paper-attribute">

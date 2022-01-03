@@ -7,7 +7,10 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <div className="App">
-      <h1>Work in progress!</h1>
+      <h1>
+        Work in progress! The data shown does not represent actual paper
+        content.
+      </h1>
       <PaperScreen />
       <Footer />
     </div>

@@ -1,0 +1,30 @@
+.Filters {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 800px;
+}
+
+.Title {
+  display: flex;
+  flex-direction: row;
+  font-size: 24px;
+  gap: 5px;
+  margin-bottom: -15px;
+}
+
+#title {
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+#search-form {
+  width: 60%;
+  height: 30px;
+
+  border-width: 1px;
+  border-radius: 10px;
+
+  font-weight: bold;
+  padding-left: 10px;
+}

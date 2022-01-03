@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "title": "One Size Does Not Fit All: A Grounded Theory and Online Survey Study of Developer Preferences for Security Warning Types",
+    "authors": [0, 1, 2],
+    "year": 2020,
+    "method": "mixed",
+    "questions": "Where, when and how to present security warnings to developers?",
+    "participants": [
+      { "id": 0, "amount": 14, "type": "professional software developers" },
+      { "id": 1, "amount": 12, "type": "students" }
+    ],
+    "studies": [],
+    "dataCollectionMethods": [
+      "semi-structured interviews",
+      "focus group",
+      "online survey"
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Lessons Learned from Using an Online Platform to Conduct Large-Scale, Online Controlled Security Experiments with Software Developers",
+    "authors": [0],
+    "year": 2017,
+    "method": "Qualitative",
+    "questions": "In order to allow for distributed recruitment of IT professionals for security user studies, the researchers designed Developer Observatory, a browser-based virtual laboratory platform that enables controlled programming experiments while retaining most of the observational power of lab studies. In this paper, the researchers share their experiences using this platform.",
+
+    "participants": [],
+    "studies": [],
+    "dataCollectionMethods": ["controlled experiments", "questionnaire"]
+  }
+]
