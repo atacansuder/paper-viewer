@@ -14,7 +14,7 @@ function Paper(props) {
   function getAuthors(arr) {
     const result = [];
     for (var i = 0; i < arr.length; i++) {
-      result.push(authors[i].name);
+      if (arr.includes(authors[i].id)) result.push(authors[i].name);
     }
     return joinArray(result);
   }
