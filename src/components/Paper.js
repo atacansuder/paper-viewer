@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import "./Paper.css";
 
 import db from "../firebase";
-import { collection, doc, getDocs, getDoc, refEqual } from "firebase/firestore";
+import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 
 async function getSingleDoc(db, path) {
   const singleSnapshop = await getDoc(doc(db, path));
@@ -14,34 +14,20 @@ async function getSingleDoc(db, path) {
 
 function Paper(props) {
   const [authors, setAuthors] = useState([]);
-
   const data = props.paperdata;
-
-  /*async function getAuthors() {
-    data.authors.forEach((author) => {
-      console.log(authors);
-      const singleSnapshot = getSingleDoc(db, author.path);
-      singleSnapshot.then((a) => {
-        setAuthors([...authors, a.lastname]);
-      });
-    });
-  }*/
 
   async function getAuthors() {
     const paths = [];
     data.authors.forEach((author) => {
       paths.push(author.path);
     });
-    const items = [];
-    paths.forEach((path) => {
-      var singleSnapshot = getSingleDoc(db, path);
-      singleSnapshot.then((a) => {
-        items.push(a.lastname);
-      });
-    });
-    const pog = ["selamun", "aleyküm"];
-    console.log(items);
-    setAuthors(items);
+    const authors = [];
+    for (var i = 0; i < paths.length; i++) {
+      const authorSnapshot = await getDoc(doc(db, paths[i]));
+      const data = authorSnapshot.data();
+      authors.push(data.lastname);
+    }
+    setAuthors(authors);
   }
 
   useEffect(() => {
