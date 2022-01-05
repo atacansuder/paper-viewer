@@ -1,37 +1,64 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 import "./Paper.css";
 
-const authors = require("../data/authors.json");
+import db from "../firebase";
+import { collection, doc, getDocs, getDoc, refEqual } from "firebase/firestore";
+
+async function getSingleDoc(db, path) {
+  const singleSnapshop = await getDoc(doc(db, path));
+  const result = singleSnapshop.data();
+  return result;
+}
 
 function Paper(props) {
+  const [authors, setAuthors] = useState([]);
+
   const data = props.paperdata;
 
-  function joinArray(x) {
-    return x.join(", ");
+  /*async function getAuthors() {
+    data.authors.forEach((author) => {
+      console.log(authors);
+      const singleSnapshot = getSingleDoc(db, author.path);
+      singleSnapshot.then((a) => {
+        setAuthors([...authors, a.lastname]);
+      });
+    });
+  }*/
+
+  async function getAuthors() {
+    const paths = [];
+    data.authors.forEach((author) => {
+      paths.push(author.path);
+    });
+    const items = [];
+    paths.forEach((path) => {
+      var singleSnapshot = getSingleDoc(db, path);
+      singleSnapshot.then((a) => {
+        items.push(a.lastname);
+      });
+    });
+    const pog = ["selamun", "aleyküm"];
+    console.log(items);
+    setAuthors(items);
   }
 
-  function getAuthors(arr) {
-    const result = [];
-    for (var i = 0; i < arr.length; i++) {
-      if (arr.includes(authors[i].id)) result.push(authors[i].name);
-    }
-    return joinArray(result);
-  }
+  useEffect(() => {
+    getAuthors();
+  }, []);
 
-  function calculateParticipants(p) {
-    var result = 0;
-    for (var i = 0; i < p.length; i++) {
-      result += p[i].amount;
-    }
-    return result;
-  }
+  /*async function getSingleDoc(db, path) {
+  const singleSnapshop = await getDoc(doc(db, path));
+  const result = singleSnapshop.data();
+  return result;
+}*/
 
   return (
     <div className="Paper">
       <div className="Paper-title">{data.title}</div>
       <div className="Paper-authors">
-        {getAuthors(data.authors) + " " + data.year}
+        {authors.join(", ") + " " + data.year}
       </div>
       <div className="Paper-attributes">
         <div className="Paper-attribute">
@@ -45,7 +72,7 @@ function Paper(props) {
         <div className="Paper-attribute">
           <p className="Paper-attribute-title">Participants:&nbsp;</p>
           <p className="Paper-attribute-description">
-            {calculateParticipants(data.participants)}
+            {data.participants.length}
           </p>
         </div>
         <div className="Paper-attribute">
@@ -57,7 +84,7 @@ function Paper(props) {
             Data collection methods:&nbsp;
           </p>
           <p className="Paper-attribute-description">
-            {joinArray(data.dataCollectionMethods)}
+            {data.dataCollectionMethods.join(", ")}
           </p>
         </div>
       </div>
