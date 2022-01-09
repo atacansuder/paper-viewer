@@ -1,0 +1,37 @@
+.Authors {
+  width: 500px;
+  height: auto;
+
+  background-color: white;
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1px;
+}
+
+.Authors-list {
+  width: 100%;
+}
+
+h3 {
+  text-align: center;
+}
+
+ul {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.Authors-inputform {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.Authors-addbutton {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 10px;
+}

@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 
+import Authors from "./components/Authors";
 import PaperScreen from "./components/PaperScreen";
 import Footer from "./components/Footer";
 
@@ -13,11 +14,8 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <div className="App">
-      <h1>
-        Work in progress! The data shown does not represent actual paper
-        content.
-      </h1>
-      <PaperScreen />
+      <h1>WIP</h1>
+      <Authors />
       <Footer />
     </div>
   );
