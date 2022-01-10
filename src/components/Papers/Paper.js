@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import "./Paper.css";
 
-import db from "../firebase";
+import db from "../../firebase";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 
 async function getSingleDoc(db, path) {

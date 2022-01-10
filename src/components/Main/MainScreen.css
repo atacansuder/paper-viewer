@@ -1,0 +1,29 @@
+.MainScreen {
+  height: 100%;
+  width: 100%;
+
+  background-color: rgb(250, 250, 250);
+
+  display: flex;
+  justify-content: center;
+}
+
+.MainScreen-buttons_container {
+  height: auto;
+  width: 20vw;
+
+  margin-top: 100px;
+  gap: 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.MainScreen-button {
+  width: 100%;
+  height: 100px;
+
+  cursor: pointer;
+
+  font-size: 36px;
+}

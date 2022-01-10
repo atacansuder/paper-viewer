@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import "./Authors.css";
 
-import db from "../firebase";
+import db from "../../firebase";
 import {
   collection,
   doc,
@@ -43,9 +43,13 @@ function Authors() {
     authors.forEach((author) => {
       authorIDs.push(author.id);
     });
+    var newID = 0;
+    if (authorIDs.length != 0) {
+      newID = authorIDs[authorIDs.length - 1] + 1;
+    }
 
     const authorData = {
-      id: authorIDs[authorIDs.length - 1] + 1,
+      id: newID,
       firstname: firstnameRef.current.value,
       lastname: lastnameRef.current.value,
     };
