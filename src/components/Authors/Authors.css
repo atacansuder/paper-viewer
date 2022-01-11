@@ -4,34 +4,71 @@
 
   background-color: white;
   border-style: solid;
-  border-color: lightgray;
+  border-color: #d3d3d3;
   border-width: 1px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.Authors-list {
+.Authors-titlecontainer {
   width: 100%;
-}
-
-h3 {
+  height: 35px;
   text-align: center;
+
+  background-color: rgb(7, 82, 154);
 }
 
-ul {
-  max-height: 500px;
-  overflow-y: auto;
+.Authors-titlecontainer h2 {
+  margin: 0;
+  color: white;
 }
 
-.Authors-inputform {
+.Authors-searchtitle {
+  margin: 0;
+  margin-top: 10px;
+}
+
+.Authors-searchboxcontainer {
+  height: 50px;
   width: 100%;
+
   display: flex;
   justify-content: center;
-  gap: 10px;
-  padding-bottom: 10px;
+  align-items: center;
 }
 
-.Authors-addbutton {
-  display: flex;
+.searchform {
+  height: 100%;
   width: 100%;
+
+  display: flex;
   justify-content: center;
-  padding-bottom: 10px;
+  align-items: center;
+
+  border-bottom-color: darkgray;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+
+  gap: 5px;
+}
+
+.searchbox {
+  width: 33%;
+  height: 55%;
+
+  background-color: rgb(239, 239, 239);
+
+  border-radius: 20px;
+  border-width: 0px;
+  padding: 0px 0px 0px 20px;
+}
+
+.searchbox-icon {
+  border-radius: 50%;
+  border-width: 0px;
+  background-color: rgb(239, 239, 239);
+
+  cursor: pointer;
 }
