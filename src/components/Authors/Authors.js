@@ -12,6 +12,7 @@ import AuthorLink from "./AuthorLink";
 
 function Authors() {
   const [authors, setAuthors] = useState([]);
+  const [fetchedAuthors, setFetchedAuthors] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const nameRef = React.createRef();
@@ -38,8 +39,15 @@ function Authors() {
     q_snapshot.forEach((doc) => {
       retreivedAuthors.push(doc.data());
     });
-    setAuthors(retreivedAuthors);
+    setFetchedAuthors(retreivedAuthors);
+    console.log(retreivedAuthors);
+    console.log(fetchedAuthors);
   };
+
+  useEffect(() => {
+    setAuthors(fetchedAuthors);
+    console.log("pog!");
+  }, []);
 
   return (
     <div className="Authors">
@@ -68,14 +76,10 @@ function Authors() {
         </form>
       </div>
       <div className="Authors-listdiv">
-        <div className="Authors-listdiv-columns">
-          <h3 id="columntitle-id">ID</h3>
-          <h3 id="columntitle-lastname">Lastname</h3>
-          <h3 id="columntitle-firstname">Firstname</h3>
-          <div id="columntitle-actions" />
-        </div>
         <div>
-          <AuthorLink />
+          {authors.map((author) => {
+            <AuthorLink data={author} />;
+          })}
         </div>
       </div>
     </div>
