@@ -75,7 +75,6 @@
 
 .Authors-listdiv {
   height: auto;
-  min-height: 50px;
   width: 100%;
 }
 
@@ -119,4 +118,9 @@
   border-bottom-width: 2px;
   border-bottom-color: darkgray;
   border-bottom-style: solid;
+}
+
+.search-message {
+  margin: 5px;
+  margin-left: 10px;
 }

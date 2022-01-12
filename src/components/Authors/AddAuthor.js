@@ -30,7 +30,8 @@ function AddAuthor(props) {
         firstnameRef.current.value.toLowerCase() +
         " " +
         lastnameRef.current.value.toLowerCase(),
-      papers: [],
+      paper_ids: [],
+      paper_objects: {},
     };
 
     const docRef = await addDoc(collection(db, "authors"), newAuthor);
@@ -58,11 +59,17 @@ function AddAuthor(props) {
           <div className="AddAuthor-button-icondiv">
             {active ? <MdRemove size={24} /> : <MdAdd size={24} />}
           </div>
-          <div className="AddAuthor-button-textdiv">Add author</div>
+          <div className="AddAuthor-button-textdiv">
+            {active ? "Cancel" : "Add author"}
+          </div>
         </button>
       </div>
       {active ? (
         <div className="AddAuthor-formdiv">
+          <h4 className="AddAuthor-formtitle" id="warning-title">
+            Please check if the author you want to add exists in the database!
+          </h4>
+          <br />
           <h4 className="AddAuthor-formtitle">Enter author information:</h4>
           <form className="form" onSubmit={submitAuthor}>
             <input

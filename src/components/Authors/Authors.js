@@ -12,19 +12,20 @@ import AuthorLink from "./AuthorLink";
 
 function Authors() {
   const [authors, setAuthors] = useState([]);
-  const [fetchedAuthors, setFetchedAuthors] = useState([]);
+  const [noAuthorsFound, setNoAuthorsFound] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const nameRef = React.createRef();
 
   const onKeyDownHandler = (event) => {
     if (event.keyCode === 13) {
-      searchAuthors(event);
+      searchAuthors();
     }
   };
 
   const searchAuthors = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const insensitiveInput = nameRef.current.value.toLowerCase();
     nameRef.current.value = "";
 
@@ -39,15 +40,14 @@ function Authors() {
     q_snapshot.forEach((doc) => {
       retreivedAuthors.push(doc.data());
     });
-    setFetchedAuthors(retreivedAuthors);
-    console.log(retreivedAuthors);
-    console.log(fetchedAuthors);
+    setAuthors(retreivedAuthors);
+    if (retreivedAuthors.length === 0) {
+      setNoAuthorsFound(true);
+    } else {
+      setNoAuthorsFound(false);
+    }
+    setLoading(false);
   };
-
-  useEffect(() => {
-    setAuthors(fetchedAuthors);
-    console.log("pog!");
-  }, []);
 
   return (
     <div className="Authors">
@@ -59,11 +59,7 @@ function Authors() {
       </div>
       <h2 className="Authors-searchtitle">Search authors</h2>
       <div className="Authors-searchboxcontainer">
-        <form
-          className="searchform"
-          onKeyDown={onKeyDownHandler}
-          onSubmit={searchAuthors}
-        >
+        <form className="searchform" onSubmit={searchAuthors}>
           <input
             className="searchbox"
             type="text"
@@ -77,9 +73,13 @@ function Authors() {
       </div>
       <div className="Authors-listdiv">
         <div>
-          {authors.map((author) => {
-            <AuthorLink data={author} />;
-          })}
+          {loading ? (
+            <h4 className="search-message">Searching authors...</h4>
+          ) : noAuthorsFound ? (
+            <h4 className="search-message">No authors found...</h4>
+          ) : authors.length === 0 ? null : (
+            authors.map((author) => <AuthorLink data={author} />)
+          )}
         </div>
       </div>
     </div>

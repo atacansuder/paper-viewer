@@ -12,11 +12,11 @@ function AuthorLink(props) {
   return (
     <div className="AuthorLink">
       <div className="AuthorLink-textdiv">
-        <strong id="id">ID:</strong> {"VgudcmI5bFoGV7qJidTD"};&nbsp;
-        <strong>{"Ortloff, Anna-Marie"}</strong>
+        <strong id="id">ID:</strong> {authorData.id};&nbsp;
+        <strong>{authorData.lastname + ", " + authorData.firstname}</strong>
       </div>
       <div className="AuthorLink-linkdiv">
-        <Link to="authors">
+        <Link to={"/authors/" + authorData.id}>
           <MdArrowRightAlt size={36} color="blue" />
         </Link>
       </div>
