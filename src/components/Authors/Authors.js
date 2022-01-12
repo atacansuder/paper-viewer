@@ -8,12 +8,13 @@ import "./Authors.css";
 import db from "../../firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import AddAuthor from "./AddAuthor";
+import AuthorLink from "./AuthorLink";
 
 function Authors() {
   const [authors, setAuthors] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const firstnameRef = React.createRef();
-  const lastnameRef = React.createRef();
+  const nameRef = React.createRef();
 
   const onKeyDownHandler = (event) => {
     if (event.keyCode === 13) {
@@ -23,17 +24,21 @@ function Authors() {
 
   const searchAuthors = async (event) => {
     event.preventDefault();
-    const insensitiveFirstname = firstnameRef.current.value.toLowerCase();
-    firstnameRef.current.value = "";
-    const q1 = query(
+    const insensitiveInput = nameRef.current.value.toLowerCase();
+    nameRef.current.value = "";
+
+    const q = query(
       collection(db, "authors"),
-      where("firstname_insensitive", ">=", insensitiveFirstname),
-      where("firstname_insensitive", "<=", insensitiveFirstname + "\uf8ff")
+      where("fullname_insensitive", ">=", insensitiveInput),
+      where("fullname_insensitive", "<=", insensitiveInput + "\uf8ff")
     );
-    const q1_snapshot = await getDocs(q1);
-    q1_snapshot.forEach((doc) => {
-      console.log(doc.data());
+
+    const q_snapshot = await getDocs(q);
+    const retreivedAuthors = [];
+    q_snapshot.forEach((doc) => {
+      retreivedAuthors.push(doc.data());
     });
+    setAuthors(retreivedAuthors);
   };
 
   return (
@@ -54,21 +59,25 @@ function Authors() {
           <input
             className="searchbox"
             type="text"
-            placeholder="Firstname"
-            ref={firstnameRef}
-          />
-          <input
-            className="searchbox"
-            type="text"
-            placeholder="Lastname"
-            ref={lastnameRef}
+            placeholder="Enter author name..."
+            ref={nameRef}
           />
           <button className="searchbox-icon" type="submit">
             <MdSearch size={24} color="black" />
           </button>
         </form>
       </div>
-      <div>{authors}</div>
+      <div className="Authors-listdiv">
+        <div className="Authors-listdiv-columns">
+          <h3 id="columntitle-id">ID</h3>
+          <h3 id="columntitle-lastname">Lastname</h3>
+          <h3 id="columntitle-firstname">Firstname</h3>
+          <div id="columntitle-actions" />
+        </div>
+        <div>
+          <AuthorLink />
+        </div>
+      </div>
     </div>
   );
 }

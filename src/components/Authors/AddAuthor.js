@@ -25,6 +25,11 @@ function AddAuthor(props) {
       firstname_insensitive: firstnameRef.current.value.toLowerCase(),
       lastname: lastnameRef.current.value,
       lastname_insensitive: lastnameRef.current.value.toLowerCase(),
+      fullname: firstnameRef.current.value + " " + lastnameRef.current.value,
+      fullname_insensitive:
+        firstnameRef.current.value.toLowerCase() +
+        " " +
+        lastnameRef.current.value.toLowerCase(),
       papers: [],
     };
 
@@ -33,6 +38,17 @@ function AddAuthor(props) {
     await updateDoc(docRef, {
       id: docRef.id,
     });
+
+    alert(
+      "Author " +
+        newAuthor.fullname +
+        " with ID " +
+        docRef.id +
+        " added to the database."
+    );
+
+    firstnameRef.current.value = "";
+    lastnameRef.current.value = "";
   };
 
   return (

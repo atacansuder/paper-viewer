@@ -1,0 +1,21 @@
+.AuthorLink {
+  width: 100%;
+  height: auto;
+}
+
+.AuthorLink-iddiv {
+  width: 135px;
+  max-width: 135px;
+  height: 25px;
+
+  display: inline-block;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: darkgray;
+
+  font-size: 12px;
+}
