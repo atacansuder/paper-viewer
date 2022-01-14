@@ -1,0 +1,71 @@
+.AddPaper {
+  width: 100%;
+  height: auto;
+
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: darkgray;
+}
+
+.AddPaper-buttondiv {
+  width: 100%;
+  height: auto;
+
+  padding: 10px;
+
+  display: flex;
+}
+
+.AddPaper-button {
+  height: 25px;
+  width: 125px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  background-color: orangered;
+  color: white;
+  font-weight: bold;
+
+  border-width: 0px;
+
+  margin-right: 15px;
+  margin-left: auto;
+  padding: 0;
+
+  cursor: pointer;
+}
+
+.AddPaper-button-icondiv {
+  height: 100%;
+  width: 33%;
+  margin: 0;
+}
+
+.AddPaper-button-textdiv {
+  height: 100%;
+  width: 66%;
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 10px;
+}
+
+.AddPaper-formdiv {
+  padding-bottom: 10px;
+}
+
+.inputbox {
+  width: 66%;
+}
+
+.search-message {
+  margin: 5px;
+  margin-left: 10px;
+}

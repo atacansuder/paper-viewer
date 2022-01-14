@@ -52,6 +52,10 @@
   border-bottom-color: darkgray;
 }
 
+.AuthorPage-paperbar {
+  width: 100%;
+}
+
 #lastelement {
   border-bottom-width: 0px;
 }
@@ -73,15 +77,29 @@
   margin-top: 10px;
 }
 
-.paperlink {
-  color: rgb(0, 98, 255);
+.AuthorPage-addpaperdiv {
+  width: 100%;
 }
 
-.paper-title {
-  width: 50%;
+.paperlink {
+  color: rgb(0, 98, 255);
+  width: 100%;
 
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.paper-title {
+  width: 100%;
+
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  padding-left: 5px;
+
+  font-size: 14px;
 }

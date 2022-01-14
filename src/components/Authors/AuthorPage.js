@@ -6,11 +6,19 @@ import { Link } from "react-router-dom";
 
 import "./AuthorPage.css";
 import db from "../../firebase";
+import AuthorAddPaper from "./AuthorAddPaper";
 
 function AuthorPage() {
   const { author_id } = useParams();
   const [authorData, setAuthorData] = useState();
   const [loading, setLoading] = useState(true);
+  const [addPaperActive, setAddPaperActive] = useState(false);
+
+  const paperInputRef = React.createRef();
+
+  const toggleForm = () => {
+    setAddPaperActive(!addPaperActive);
+  };
 
   const fetchAuthor = async () => {
     const authorSnapshot = await getDoc(doc(db, "authors", author_id));
@@ -57,15 +65,23 @@ function AuthorPage() {
             Papers (WIP, not actual papers!)
           </h2>
         </div>
+
+        <div className="AuthorPage-addpaperdiv">
+          <AuthorAddPaper data={authorData} />
+        </div>
         <div className="AuthorPage-paperdiv">
-          <div className="AuthorPage-paperbar">
-            <Link to="/authors" className="paperlink">
-              <strong className="paper-title">
-                One Size Does Not Fit All: A Grounded Theory and Online Survey
-                Study of Developer Preferences for Security Warning Types
-              </strong>
-            </Link>
-          </div>
+          {authorData.paper_ids.length === 0 ? (
+            <strong>This author does not have any papers...</strong>
+          ) : (
+            <div className="AuthorPage-paperbar">
+              <Link to="/authors" className="paperlink" title={"placeholder"}>
+                <strong className="paper-title">
+                  One size does not fit all: a grounded theory and online survey
+                  study of developer preferences for security warning types
+                </strong>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>
