@@ -10,7 +10,7 @@ import AuthorAddPaper from "./AuthorAddPaper";
 
 function AuthorPage() {
   const { author_id } = useParams();
-  const [authorData, setAuthorData] = useState();
+  const [authorData, setAuthorData] = useState({});
   const [loading, setLoading] = useState(true);
   const [addPaperActive, setAddPaperActive] = useState(false);
 
@@ -26,11 +26,24 @@ function AuthorPage() {
     setLoading(false);
   };
 
+  const parseAuthors = () => {
+    const arr = [];
+    for (var i = 0; i < authorData.paper_ids.length; i++) {
+      arr.push(
+        <Link key={i} to="/authors" className="paperlink" title="placeholder">
+          <strong className="paper-title">
+            {authorData.paper_objects[authorData.paper_ids[i]].title}
+          </strong>
+        </Link>
+      );
+    }
+    return arr;
+  };
+
   useEffect(() => {
     setLoading(true);
     fetchAuthor();
   }, []);
-  console.log(authorData);
 
   if (loading) {
     return (
@@ -61,9 +74,7 @@ function AuthorPage() {
 
       <div className="AuthorPage-papersdiv">
         <div className="AuthorPage-papersdiv-titlediv">
-          <h2 className="AuthorPage-sectiontitle">
-            Papers (WIP, not actual papers!)
-          </h2>
+          <h2 className="AuthorPage-sectiontitle">Papers</h2>
         </div>
 
         <div className="AuthorPage-addpaperdiv">
@@ -73,14 +84,7 @@ function AuthorPage() {
           {authorData.paper_ids.length === 0 ? (
             <strong>This author does not have any papers...</strong>
           ) : (
-            <div className="AuthorPage-paperbar">
-              <Link to="/authors" className="paperlink" title={"placeholder"}>
-                <strong className="paper-title">
-                  One size does not fit all: a grounded theory and online survey
-                  study of developer preferences for security warning types
-                </strong>
-              </Link>
-            </div>
+            parseAuthors()
           )}
         </div>
       </div>

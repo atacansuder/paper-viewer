@@ -45,8 +45,8 @@ function AuthorAddPaper(props) {
         retreivedPapers.push(paper.data());
       }
     });
+    console.log(q_snapshot.size);
     setPapers(retreivedPapers);
-    console.log("rp: ", retreivedPapers);
     if (retreivedPapers.length === 0) {
       setNoPapersFound(true);
     } else {
@@ -71,7 +71,7 @@ function AuthorAddPaper(props) {
         <div className="AddPaper-formdiv">
           <h4 className="AddAuthor-formtitle" id="warning-title">
             Please check if the paper you want to add already exists in the
-            paper list!
+            paper list! (not needed anymore)
           </h4>
           <br />
           <form className="form" onSubmit={fetchPapers}>
