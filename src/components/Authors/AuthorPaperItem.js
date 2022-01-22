@@ -37,6 +37,7 @@ function AuthorPaperItem(props) {
       paper_ids: arrayUnion(props.data.id),
       [`paper_objects.${props.data.id}`]: props.data,
     });
+    props.fetchFunc();
     setAdded(true);
   };
 

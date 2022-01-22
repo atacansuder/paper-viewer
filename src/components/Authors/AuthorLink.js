@@ -16,7 +16,7 @@ function AuthorLink(props) {
         <strong>{authorData.lastname + ", " + authorData.firstname}</strong>
       </div>
       <div className="AuthorLink-linkdiv">
-        <Link to={"/authors/" + authorData.id}>
+        <Link to={"./" + authorData.id}>
           <MdArrowRightAlt size={36} color="blue" />
         </Link>
       </div>

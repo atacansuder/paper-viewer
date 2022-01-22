@@ -7,10 +7,10 @@ function MainScreen() {
   return (
     <div className="MainScreen">
       <div className="MainScreen-buttons_container">
-        <Link to="/authors">
+        <Link to="./authors">
           <button className="MainScreen-button">Authors</button>
         </Link>
-        <Link to="/papers">
+        <Link to="./papers">
           <button className="MainScreen-button">Papers</button>
         </Link>
       </div>

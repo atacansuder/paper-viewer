@@ -52,6 +52,10 @@
   border-bottom-color: darkgray;
 }
 
+.AuthorPage-infobar-title {
+  width: 85px;
+}
+
 .AuthorPage-paperbar {
   width: 100%;
 }
@@ -81,14 +85,50 @@
   width: 100%;
 }
 
-.paperlink {
-  color: rgb(0, 98, 255);
+.PaperItem {
+  height: 25px;
   width: 100%;
+  max-width: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: darkgray;
+}
+
+.PaperItem-link {
+  color: rgb(0, 98, 255);
+  width: auto;
+  padding-right: 5px;
 
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.PaperItem-delete {
+  height: 25px;
+  width: 25px;
+
+  background-color: red;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+
+  border-width: 0;
+  cursor: pointer;
+
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: darkgray;
 }
 
 .paper-title {

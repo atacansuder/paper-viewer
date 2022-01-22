@@ -70,8 +70,8 @@ function AuthorAddPaper(props) {
       {addPaperActive ? (
         <div className="AddPaper-formdiv">
           <h4 className="AddAuthor-formtitle" id="warning-title">
-            Please check if the paper you want to add already exists in the
-            paper list! (not needed anymore)
+            Note: if the searched paper is already in the list, it will not be
+            shown
           </h4>
           <br />
           <form className="form" onSubmit={fetchPapers}>
@@ -96,6 +96,7 @@ function AuthorAddPaper(props) {
                   key={paper.id}
                   data={paper}
                   author_id={props.data.id}
+                  fetchFunc={props.fetchFunc}
                 />
               ))
             )}

@@ -22,11 +22,14 @@ function App() {
     <div className="App">
       <h1>Work in progress!</h1>
       <Routes>
-        <Route path="/" element={<MainScreen />} />
-        <Route path="/paper-viewer" element={<MainScreen />} />
-        <Route path="/authors" element={<AuthorsScreen />} />
-        <Route path="/authors/:author_id" element={<AuthorPage />} />
-        <Route path="/papers" element={<PaperScreen />} />
+        <Route path="paper-viewer/" element={<MainScreen />} />
+        <Route path="paper-viewer/paper-viewer" element={<MainScreen />} />
+        <Route path="paper-viewer/authors" element={<AuthorsScreen />} />
+        <Route
+          path="paper-viewer/authors/:author_id"
+          element={<AuthorPage />}
+        />
+        <Route path="paper-viewer/papers" element={<PaperScreen />} />
       </Routes>
       <Footer />
     </div>

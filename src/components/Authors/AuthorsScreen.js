@@ -13,7 +13,7 @@ function AuthorsScreen() {
     <div className="AuthorsScreen">
       <h1>Authors screen</h1>
       <Authors />
-      <Link to="/">
+      <Link to="/paper-viewer">
         <br />
         <button>Back to main screen</button>
       </Link>

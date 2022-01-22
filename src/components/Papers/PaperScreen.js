@@ -56,7 +56,7 @@ function PaperScreen() {
       {papers.map((item) => (
         <Paper key={item.id} paperdata={item} />
       ))}
-      <Link to="/">
+      <Link to="./">
         <button>Back to main screen</button>
       </Link>
     </div>

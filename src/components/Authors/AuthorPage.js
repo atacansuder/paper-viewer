@@ -2,11 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
-import { Link } from "react-router-dom";
 
 import "./AuthorPage.css";
 import db from "../../firebase";
 import AuthorAddPaper from "./AuthorAddPaper";
+import AuthorPaper from "./AuthorPaper";
 
 function AuthorPage() {
   const { author_id } = useParams();
@@ -26,16 +26,10 @@ function AuthorPage() {
     setLoading(false);
   };
 
-  const parseAuthors = () => {
+  const parsePapers = () => {
     const arr = [];
     for (var i = 0; i < authorData.paper_ids.length; i++) {
-      arr.push(
-        <Link key={i} to="/authors" className="paperlink" title="placeholder">
-          <strong className="paper-title">
-            {authorData.paper_objects[authorData.paper_ids[i]].title}
-          </strong>
-        </Link>
-      );
+      arr.push(<AuthorPaper key={i} paperID={authorData.paper_ids[i]} />);
     }
     return arr;
   };
@@ -61,13 +55,20 @@ function AuthorPage() {
         </div>
         <div className="AuthorPage-infodiv">
           <div className="AuthorPage-infobar">
-            <strong>Firstname:&nbsp;</strong> {authorData.firstname}
+            <strong className="AuthorPage-infobar-title">
+              Firstname:&nbsp;
+            </strong>{" "}
+            {authorData.firstname}
           </div>
           <div className="AuthorPage-infobar">
-            <strong>Lastname:&nbsp;</strong> {authorData.lastname}
+            <strong className="AuthorPage-infobar-title">
+              Lastname:&nbsp;
+            </strong>{" "}
+            {authorData.lastname}
           </div>
           <div className="AuthorPage-infobar" id="lastelement">
-            <strong>ID:&nbsp;</strong> {authorData.id}
+            <strong className="AuthorPage-infobar-title">ID:&nbsp;</strong>{" "}
+            {authorData.id}
           </div>
         </div>
       </div>
@@ -78,13 +79,13 @@ function AuthorPage() {
         </div>
 
         <div className="AuthorPage-addpaperdiv">
-          <AuthorAddPaper data={authorData} />
+          <AuthorAddPaper data={authorData} fetchFunc={fetchAuthor} />
         </div>
         <div className="AuthorPage-paperdiv">
           {authorData.paper_ids.length === 0 ? (
             <strong>This author does not have any papers...</strong>
           ) : (
-            parseAuthors()
+            parsePapers()
           )}
         </div>
       </div>
