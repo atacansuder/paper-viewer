@@ -29,7 +29,14 @@ function AuthorPage() {
   const parsePapers = () => {
     const arr = [];
     for (var i = 0; i < authorData.paper_ids.length; i++) {
-      arr.push(<AuthorPaper key={i} paperID={authorData.paper_ids[i]} />);
+      arr.push(
+        <AuthorPaper
+          key={i}
+          paperID={authorData.paper_ids[i]}
+          authorID={authorData.id}
+          fetchFunc={fetchAuthor}
+        />
+      );
     }
     return arr;
   };

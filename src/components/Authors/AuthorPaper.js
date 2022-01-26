@@ -1,6 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { collection, deleteDoc, doc, getDoc } from "firebase/firestore";
+import {
+  arrayRemove,
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 
@@ -10,6 +17,15 @@ import "./AuthorPaper.css";
 function AuthorPaper(props) {
   const [paperData, setPaperData] = useState({});
   const [loading, setLoading] = useState(true);
+  const [hover, setHover] = useState(false);
+
+  const onHover = () => {
+    setHover(true);
+  };
+
+  const onLeave = () => {
+    setHover(false);
+  };
 
   const fetchPaper = async () => {
     const docRef = doc(db, "papers", props.paperID);
@@ -18,7 +34,11 @@ function AuthorPaper(props) {
   };
 
   const deletePaper = async () => {
-    console.log("pawg!");
+    await updateDoc(doc(db, "authors", props.authorID), {
+      paper_ids: arrayRemove(props.paperID),
+    });
+    alert('The paper "' + paperData.title + '" has been successfully deleted.');
+    props.fetchFunc();
   };
 
   useEffect(() => {
@@ -30,7 +50,7 @@ function AuthorPaper(props) {
   return loading ? (
     <p>Loading...</p>
   ) : (
-    <div className="PaperItem">
+    <div className="PaperItem" onMouseEnter={onHover} onMouseLeave={onLeave}>
       <Link
         key={props.paperID}
         to="./authors"
@@ -39,9 +59,11 @@ function AuthorPaper(props) {
       >
         <strong className="paper-title">{paperData.title}</strong>
       </Link>
-      <button className="PaperItem-delete" onClick={deletePaper}>
-        <MdDelete size={18} color="white" />
-      </button>
+      {hover ? (
+        <button className="PaperItem-delete" onClick={deletePaper}>
+          <MdDelete size={18} color="white" />
+        </button>
+      ) : null}
     </div>
   );
 }
