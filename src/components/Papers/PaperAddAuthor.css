@@ -1,0 +1,35 @@
+.PaperAddAuthor {
+  display: flex;
+  flex-direction: row;
+
+  height: 25px;
+  width: 100%;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.button {
+  height: 20px;
+  width: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  background-color: rgb(7, 82, 154);
+  color: white;
+  font-weight: bold;
+
+  border-width: 0px;
+
+  margin-left: 5px;
+
+  cursor: pointer;
+}
+
+.button-hidden {
+  display: none;
+}

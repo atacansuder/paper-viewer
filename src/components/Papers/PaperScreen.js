@@ -9,6 +9,7 @@ import { collection, doc, getDocs, getDoc, refEqual } from "firebase/firestore";
 
 import Paper from "./Paper";
 import Filters from "../Filters";
+import PaperInput from "./PaperInput";
 
 async function getCollection(db, col) {
   const papersCol = collection(db, col);
@@ -53,9 +54,7 @@ function PaperScreen() {
     <div className="PaperScreen">
       <Filters />
       <h1 className="PaperScreen-title">Paper List</h1>
-      {papers.map((item) => (
-        <Paper key={item.id} paperdata={item} />
-      ))}
+      <PaperInput />
       <Link to="./">
         <button>Back to main screen</button>
       </Link>

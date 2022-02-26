@@ -1,0 +1,53 @@
+.PaperInput {
+  width: 700px;
+  height: auto;
+
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+
+  padding: 5px;
+
+  background-color: white;
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: darkgray;
+}
+
+h5,
+h2 {
+  margin: 0;
+}
+
+.divtitle {
+  width: 100%;
+}
+
+.basic-inputs {
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: darkgray;
+}
+
+.inputdiv {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.inputdiv-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#title-input,
+#rsquestions-input {
+  width: 95%;
+}
+
+#rsquestions {
+  width: 100%;
+}

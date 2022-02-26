@@ -1,0 +1,18 @@
+.searchbox-icon {
+  border-radius: 50%;
+  border-width: 0px;
+  background-color: rgb(239, 239, 239);
+
+  cursor: pointer;
+}
+
+.added-authors-list {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: -15px;
+}
+
+.fetched-authors-list {
+  margin: 0;
+  margin-left: -15px;
+}
