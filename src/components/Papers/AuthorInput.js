@@ -1,12 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { MdSearch } from "react-icons/md";
-import PaperAddAuthor from "./PaperAddAuthor";
 
 import "./AuthorInput.css";
 
 import db from "../../firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
+
+import PaperAddAuthor from "./PaperAddAuthor";
+import AuthorItem from "./AuthorItem";
 
 function AuthorInput() {
   const [authors, setAuthors] = useState([]);
@@ -55,7 +57,15 @@ function AuthorInput() {
     console.log("Author " + data.fullname + " successfully added.");
   };
 
-  console.log(addedAuthors);
+  const deleteAuthor = (id) => {
+    const newAuthors = [];
+    for (var i = 0; i < addedAuthors.length; i++) {
+      if (addedAuthors[i].id != id) {
+        newAuthors.push(addedAuthors[i]);
+      }
+    }
+    setAddedAuthors(newAuthors);
+  };
 
   return (
     <div className="AuthorInput">
@@ -67,7 +77,7 @@ function AuthorInput() {
           <ul className="added-authors-list">
             {addedAuthors.map((a) => (
               <li key={a.id}>
-                <small>{a.fullname}</small>
+                <AuthorItem authorData={a} deleteFunc={deleteAuthor} />
               </li>
             ))}
           </ul>
@@ -93,12 +103,8 @@ function AuthorInput() {
         ) : authors.length === 0 ? null : (
           <ul className="fetched-authors-list">
             {authors.map((author) => (
-              <li>
-                <PaperAddAuthor
-                  key={author.id}
-                  authorData={author}
-                  addFunc={addAuthor}
-                />
+              <li key={author.id}>
+                <PaperAddAuthor authorData={author} addFunc={addAuthor} />
               </li>
             ))}
           </ul>

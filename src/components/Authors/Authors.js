@@ -78,7 +78,9 @@ function Authors() {
           ) : noAuthorsFound ? (
             <h4 className="search-message">No authors found...</h4>
           ) : authors.length === 0 ? null : (
-            authors.map((author) => <AuthorLink data={author} />)
+            authors.map((author) => (
+              <AuthorLink key={author.id} data={author} />
+            ))
           )}
         </div>
       </div>
