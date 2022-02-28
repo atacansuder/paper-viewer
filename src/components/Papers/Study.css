@@ -1,0 +1,55 @@
+.Study {
+  height: auto;
+
+  border-width: 1px;
+  border-color: darkgray;
+  border-style: solid;
+
+  background-color: rgb(250, 250, 250);
+
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+h3 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.field {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  display: grid;
+}
+
+#participant-number {
+  width: 40px;
+  margin-right: 5px;
+}
+
+.add-participant-button {
+  height: 20px;
+  width: 150px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  background-color: rgb(7, 82, 154);
+  color: white;
+  font-weight: bold;
+
+  border-width: 0px;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  cursor: pointer;
+}
+
+.add-study-button:hover {
+  background-color: rgb(9, 101, 187);
+}

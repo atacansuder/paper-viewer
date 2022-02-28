@@ -1,0 +1,32 @@
+.Studies {
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.add-study-button {
+  height: 20px;
+  width: 100px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  background-color: rgb(7, 82, 154);
+  color: white;
+  font-weight: bold;
+
+  border-width: 0px;
+
+  cursor: pointer;
+}
+
+.add-study-button:hover {
+  background-color: rgb(9, 101, 187);
+}

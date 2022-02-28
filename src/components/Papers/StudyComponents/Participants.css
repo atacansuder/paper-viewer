@@ -1,0 +1,29 @@
+.Participants {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  margin-bottom: 5px;
+}
+
+.delete-button {
+  height: 18px;
+  width: 18px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  background-color: red;
+  color: white;
+  font-weight: bold;
+
+  border-width: 0px;
+
+  margin-left: 5px;
+
+  cursor: pointer;
+}

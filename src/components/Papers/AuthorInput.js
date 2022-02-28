@@ -23,6 +23,10 @@ function AuthorInput() {
     setLoading(true);
     const insensitiveInput = nameRef.current.value.toLowerCase();
     nameRef.current.value = "";
+    const author_ids = [];
+    for (var i = 0; i < addedAuthors.length; i++) {
+      author_ids.push(addedAuthors[i].id);
+    }
 
     const q = query(
       collection(db, "authors"),
@@ -33,7 +37,10 @@ function AuthorInput() {
     const q_snapshot = await getDocs(q);
     const retreivedAuthors = [];
     q_snapshot.forEach((doc) => {
-      retreivedAuthors.push(doc.data());
+      const d = doc.data();
+      if (!author_ids.includes(d.id)) {
+        retreivedAuthors.push(d);
+      }
     });
     setAuthors(retreivedAuthors);
     if (retreivedAuthors.length === 0) {

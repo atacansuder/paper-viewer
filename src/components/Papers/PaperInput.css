@@ -21,6 +21,8 @@ h2 {
 }
 
 .divtitle {
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 100%;
 }
 
@@ -32,7 +34,6 @@ h2 {
 }
 
 .inputdiv {
-  margin-top: 5px;
   margin-bottom: 5px;
 }
 

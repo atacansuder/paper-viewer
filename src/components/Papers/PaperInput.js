@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import "./PaperInput.css";
 
 import AuthorInput from "./AuthorInput";
+import Studies from "./Studies";
 
 function PaperInput() {
   const [paper, setPaper] = useState({});
@@ -45,8 +46,12 @@ function PaperInput() {
         </div>
       </div>
       <div>
-        <h2>Authors</h2>
+        <h2 className="divtitle">Authors</h2>
         <AuthorInput />
+      </div>
+      <div>
+        <h2 className="divtitle">Studies</h2>
+        <Studies />
       </div>
     </div>
   );
