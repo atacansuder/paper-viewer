@@ -53,3 +53,7 @@ h3 {
 .add-study-button:hover {
   background-color: rgb(9, 101, 187);
 }
+
+#agreement {
+  resize: vertical;
+}

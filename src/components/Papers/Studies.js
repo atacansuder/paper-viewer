@@ -3,21 +3,34 @@ import { useState } from "react";
 
 import "./Studies.css";
 import Study from "./Study";
+import QuantitativeStudy from "./QuantitativeStudy";
 
 function Studies(props) {
-  const [studies, setStudies] = useState([]);
+  const [qualitativeStudies, setQualitativeStudies] = useState([]);
+  const [quantitativeStudies, setQuantitativeStudies] = useState([]);
 
-  const addStudy = () => {
-    const newStudies = [...studies, <Study />];
-    setStudies(newStudies);
+  const addQualitativeStudy = () => {
+    const newStudies = [...qualitativeStudies, <Study />];
+    setQualitativeStudies(newStudies);
+  };
+
+  const addQuantitativeStudy = () => {
+    const newStudies = [...quantitativeStudies, <QuantitativeStudy />];
+    setQuantitativeStudies(newStudies);
   };
 
   return (
     <div className="Studies">
-      <button className="add-study-button" onClick={addStudy}>
-        + Add study
-      </button>
-      {studies}
+      {qualitativeStudies}
+      {quantitativeStudies}
+      <div className="buttons">
+        <button className="add-study-button" onClick={addQualitativeStudy}>
+          + Add qualitative study
+        </button>
+        <button className="add-study-button" onClick={addQuantitativeStudy}>
+          + Add quantitative study
+        </button>
+      </div>
     </div>
   );
 }

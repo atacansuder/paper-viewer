@@ -10,7 +10,7 @@
 
 .add-study-button {
   height: 20px;
-  width: 100px;
+  width: 200px;
 
   display: flex;
   flex-direction: row;
@@ -29,4 +29,10 @@
 
 .add-study-button:hover {
   background-color: rgb(9, 101, 187);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }

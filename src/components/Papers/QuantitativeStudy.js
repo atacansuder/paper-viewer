@@ -1,12 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
-import "./Study.css";
+import "./QuantitativeStudy.css";
+import Analysis from "./StudyComponents/Analysis";
 
 import Participants from "./StudyComponents/Participants";
 
-function Study(props) {
+function QuantitativeStudy(props) {
   const [participants, setParticipants] = useState([]);
+  const [analysis, setAnalysis] = useState([]);
 
   const addParticipant = () => {
     const part = { id: 0, amount: 0, name: "name" };
@@ -32,18 +34,27 @@ function Study(props) {
     return p;
   };
 
+  const addAnalysis = () => {
+    const ana = { id: 0, data: {} };
+    var newAnalysis = [...analysis, ana];
+    newAnalysis = updateAnalysisIDs(newAnalysis);
+    setAnalysis(newAnalysis);
+  };
+
+  const updateAnalysisIDs = (a) => {
+    for (var i = 0; i < a.length; i++) {
+      a[i].id = i;
+    }
+    return a;
+  };
+
   console.log(participants);
 
   return (
     <div className="Study">
-      <h3>Qualitative Study 1</h3>
+      <h3>{"Quantitative Study " + "1"}</h3>
       <div className="field">
         <h5>Data collection methods:</h5>
-        <input type="text" placeholder="Separate with ; if multiple" />
-      </div>
-
-      <div className="field">
-        <h5>Analysis methods:</h5>
         <input type="text" placeholder="Separate with ; if multiple" />
       </div>
 
@@ -60,11 +71,21 @@ function Study(props) {
       </div>
 
       <div className="field">
-        <h5>Agreement:</h5>
-        <textarea name="" id="agreement" cols="30" rows="3" />
+        <h5>Data analysis:</h5>
+        <div className="analysis-container">
+          {analysis.map((a) => {
+            return <Analysis key={a.id} id={a.id} />;
+          })}
+        </div>
+        <button
+          className="add-participant-button"
+          onClick={() => addAnalysis()}
+        >
+          + Add analysis
+        </button>
       </div>
     </div>
   );
 }
 
-export default Study;
+export default QuantitativeStudy;

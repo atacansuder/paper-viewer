@@ -1,0 +1,19 @@
+.Analysis {
+  width: 100%;
+  height: auto;
+
+  border-color: darkgray;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.analysis-title {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.analysis-field {
+  display: grid;
+
+  margin: 5px;
+}

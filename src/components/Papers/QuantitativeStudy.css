@@ -1,0 +1,11 @@
+.analysis-field {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.analysis-container {
+  margin-top: 5px;
+
+  display: grid;
+  gap: 5px;
+}
