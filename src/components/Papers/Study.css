@@ -11,21 +11,89 @@
   padding-right: 5px;
 }
 
-h3 {
-  margin: 0;
-  margin-bottom: 5px;
-}
+.study-titlediv {
+  width: 100%;
+  height: 30px;
 
-.field {
-  margin-top: 10px;
   margin-bottom: 10px;
 
-  display: grid;
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
 }
 
-#participant-number {
-  width: 40px;
-  margin-right: 5px;
+.participant-warning {
+  color: red;
+  font-weight: bold;
+}
+
+.study-buttons {
+  height: auto;
+  width: 60px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  color: white;
+  font-weight: bold;
+
+  border-width: 0px;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  cursor: pointer;
+}
+
+#hide-button {
+  background-color: orangered;
+}
+
+#delete-button {
+  background-color: red;
+}
+
+#add-result-button {
+  background-color: rgb(7, 82, 154);
+  width: 200px;
+  height: 20px;
+}
+
+#add-participant-button {
+  background-color: rgb(7, 82, 154);
+  width: 150px;
+  margin-top: 20px;
+}
+
+.participantsdiv {
+  border-bottom-color: darkgray;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: none;
+}
+
+.study-add-resultsdiv {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+#results-title {
+  margin-top: 10px;
+}
+
+.title-buttonsdiv {
+  margin-left: auto;
+
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
 }
 
 .add-participant-button {
@@ -52,8 +120,4 @@ h3 {
 
 .add-study-button:hover {
   background-color: rgb(9, 101, 187);
-}
-
-#agreement {
-  resize: vertical;
 }

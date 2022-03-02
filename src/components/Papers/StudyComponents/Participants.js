@@ -17,7 +17,7 @@ function Participants(props) {
   return (
     <div className="Participants" onMouseEnter={onHover} onMouseLeave={onLeave}>
       <input type="number" name="" id="participant-number" placeholder="0" />
-      <input type="text" placeholder="Name" />
+      <input type="text" placeholder="Name" id="participant-name" />
       {hover ? (
         <button
           className="delete-button"

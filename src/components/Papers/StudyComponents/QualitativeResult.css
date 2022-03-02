@@ -1,0 +1,91 @@
+.QualitativeResult {
+  width: 100%;
+  background-color: white;
+  border: 1px solid darkgray;
+
+  margin-top: 10px;
+}
+
+.QualitativeResult-titlediv {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 5px;
+  width: 100%;
+
+  align-items: center;
+}
+
+.QualitativeResult-titlediv h3 {
+  margin: 0;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+.QualitativeResult-titlediv button {
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.qualitative-result-button,
+.add-method-button {
+  height: auto;
+  width: 60px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  color: white;
+  font-weight: bold;
+
+  border-width: 0px;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  cursor: pointer;
+}
+
+#delete-button {
+  background-color: red;
+}
+
+.data-collectiondiv {
+  display: grid;
+
+  margin-left: 5px;
+}
+
+.data-collectiondiv input {
+  width: 400px;
+}
+
+#add-method-button {
+  width: 150px;
+  background-color: rgb(7, 82, 154);
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+#data-collection-title {
+  margin: 0;
+}
+
+.analysis-agreementdiv {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.analysis-agreementdiv h4 {
+  margin: 0;
+  margin-top: 5px;
+}
+
+.analysis-agreementdiv input {
+  width: 300px;
+}

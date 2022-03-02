@@ -3,32 +3,27 @@ import { useState } from "react";
 
 import "./Studies.css";
 import Study from "./Study";
-import QuantitativeStudy from "./QuantitativeStudy";
 
 function Studies(props) {
-  const [qualitativeStudies, setQualitativeStudies] = useState([]);
-  const [quantitativeStudies, setQuantitativeStudies] = useState([]);
+  const [studies, setStudies] = useState([]);
 
-  const addQualitativeStudy = () => {
-    const newStudies = [...qualitativeStudies, <Study />];
-    setQualitativeStudies(newStudies);
-  };
-
-  const addQuantitativeStudy = () => {
-    const newStudies = [...quantitativeStudies, <QuantitativeStudy />];
-    setQuantitativeStudies(newStudies);
+  const addStudy = () => {
+    var newID;
+    if (studies.length === 0) newID = 0;
+    else newID = studies[studies.length - 1].id + 1;
+    const newStudy = { id: newID, data: {} };
+    const newStudies = [...studies, newStudy];
+    setStudies(newStudies);
   };
 
   return (
     <div className="Studies">
-      {qualitativeStudies}
-      {quantitativeStudies}
+      {studies.map((study) => {
+        return <Study key={study.id} id={study.id} />;
+      })}
       <div className="buttons">
-        <button className="add-study-button" onClick={addQualitativeStudy}>
-          + Add qualitative study
-        </button>
-        <button className="add-study-button" onClick={addQuantitativeStudy}>
-          + Add quantitative study
+        <button className="add-study-button" onClick={addStudy}>
+          + Add study
         </button>
       </div>
     </div>

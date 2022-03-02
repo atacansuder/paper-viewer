@@ -1,0 +1,45 @@
+.DataCollection {
+  margin-top: 10px;
+}
+
+.DataCollection-titlediv {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  margin-top: 10px;
+}
+
+.DataCollection-titlediv button {
+  height: 15px;
+  width: auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  color: white;
+  background-color: red;
+  font-weight: bold;
+
+  border-width: 0px;
+
+  margin-left: 5px;
+
+  cursor: pointer;
+}
+
+.DataCollection-titlediv h4 {
+  margin: 0;
+}
+
+#type-input {
+  width: 253px;
+}
+
+.add-participant-button {
+  width: 125px;
+}

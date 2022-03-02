@@ -5,6 +5,7 @@
   align-items: center;
 
   margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .delete-button {
@@ -26,4 +27,13 @@
   margin-left: 5px;
 
   cursor: pointer;
+}
+
+#participant-number {
+  width: 40px;
+}
+
+#participant-name {
+  margin-left: 5px;
+  width: 200px;
 }
