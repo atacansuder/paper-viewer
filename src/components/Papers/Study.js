@@ -5,6 +5,7 @@ import "./Study.css";
 
 import Participants from "./StudyComponents/Participants";
 import QualitativeResult from "./StudyComponents/QualitativeResult";
+import QuantitativeResult from "./StudyComponents/QuantitativeResult";
 
 function Study(props) {
   const [hidden, setHidden] = useState(false);
@@ -60,7 +61,45 @@ function Study(props) {
     setQualitataiveResults(newResults);
   };
 
-  console.log(qualitativeResults);
+  const addQuantitativeResult = () => {
+    var newID;
+    if (quantitativeResults.length === 0) newID = 0;
+    else newID = quantitativeResults[quantitativeResults.length - 1].id + 1;
+    const newResult = { id: newID, data: {} };
+    const newResults = [...quantitativeResults, newResult];
+    setQuantitativeResults(newResults);
+  };
+
+  const deleteQuantitativeResult = (id) => {
+    const newResults = [];
+    for (var i = 0; i < quantitativeResults.length; i++) {
+      if (quantitativeResults[i].id != id) {
+        newResults.push(quantitativeResults[i]);
+      }
+    }
+    setQuantitativeResults(newResults);
+  };
+
+  var resultsArray = [];
+  for (var i = 0; i < qualitativeResults.length; i++) {
+    resultsArray.push(
+      <QualitativeResult
+        key={qualitativeResults[i].id}
+        id={qualitativeResults[i].id}
+        deleteFunc={deleteQualitativeResult}
+      />
+    );
+  }
+  for (var j = 0; j < quantitativeResults.length; j++) {
+    resultsArray.push(
+      <QuantitativeResult
+        key={i + 1}
+        id={quantitativeResults[j].id}
+        deleteFunc={deleteQuantitativeResult}
+      />
+    );
+    i++;
+  }
 
   return (
     <div className="Study">
@@ -87,15 +126,7 @@ function Study(props) {
             quantitativeResults.length === 0 ? (
               <small className="participant-warning">No results</small>
             ) : (
-              qualitativeResults.map((r) => {
-                return (
-                  <QualitativeResult
-                    key={r.id}
-                    id={r.id}
-                    deleteFunc={deleteQualitativeResult}
-                  />
-                );
-              })
+              resultsArray
             )}
           </div>
           <div className="study-add-resultsdiv">
@@ -106,7 +137,11 @@ function Study(props) {
             >
               + Add qualitative result
             </button>
-            <button className="study-buttons" id="add-result-button">
+            <button
+              className="study-buttons"
+              id="add-result-button"
+              onClick={() => addQuantitativeResult()}
+            >
               + Add quantitative result
             </button>
           </div>

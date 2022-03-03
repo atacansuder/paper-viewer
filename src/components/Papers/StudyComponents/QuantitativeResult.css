@@ -1,0 +1,49 @@
+.QuantitativeResult {
+  width: 100%;
+  background-color: white;
+  border: 1px solid darkgray;
+
+  margin-top: 10px;
+}
+
+.QuantitativeResult-titlediv {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 5px;
+  width: 100%;
+
+  align-items: center;
+}
+
+.QuantitativeResult-titlediv h3 {
+  margin: 0;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+.QuantitativeResult-titlediv button {
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.data-collectiondiv {
+  display: grid;
+
+  margin-left: 5px;
+}
+
+.data-collectiondiv input {
+  width: 400px;
+}
+
+#add-method-button {
+  width: 110px;
+  background-color: rgb(7, 82, 154);
+  margin-top: 10px;
+}
+
+#data-collection-title {
+  margin: 0;
+}

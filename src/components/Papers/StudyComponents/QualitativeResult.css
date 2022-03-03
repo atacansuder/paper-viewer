@@ -65,11 +65,9 @@
 }
 
 #add-method-button {
-  width: 150px;
+  width: 110px;
   background-color: rgb(7, 82, 154);
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: 10px;
+  margin-top: 10px;
 }
 
 #data-collection-title {
@@ -88,4 +86,5 @@
 
 .analysis-agreementdiv input {
   width: 300px;
+  margin-bottom: 10px;
 }
