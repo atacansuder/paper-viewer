@@ -1,0 +1,15 @@
+.Variable {
+  margin-top: 5px;
+}
+
+.variable-titlediv {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+}
+
+#variable-delete-button {
+  height: 15px;
+  width: 15px;
+}

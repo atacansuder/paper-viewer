@@ -32,7 +32,7 @@ function DataCollection(props) {
         <h5>{"Method " + (props.id + 1)}</h5>
         <button onClick={() => props.deleteFunc(props.id)}>X</button>
       </div>
-      <input type="text" placeholder="Type" id="type-input" />
+      <input type="text" placeholder="Method name" id="type-input" />
       <div>
         {participants.map((p) => {
           return (

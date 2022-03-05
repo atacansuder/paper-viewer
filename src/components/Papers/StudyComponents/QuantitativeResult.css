@@ -2,7 +2,6 @@
   width: 100%;
   background-color: white;
   border: 1px solid darkgray;
-
   margin-top: 10px;
 }
 
@@ -31,7 +30,7 @@
 .data-collectiondiv {
   display: grid;
 
-  margin-left: 5px;
+  margin-right: 2.5px;
 }
 
 .data-collectiondiv input {
@@ -46,4 +45,10 @@
 
 #data-collection-title {
   margin: 0;
+}
+
+#add-analysis-button {
+  width: 125px;
+  background-color: rgb(7, 82, 154);
+  margin-top: 25px;
 }
