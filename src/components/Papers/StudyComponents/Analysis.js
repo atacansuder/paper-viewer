@@ -2,12 +2,14 @@ import React from "react";
 import { useState } from "react";
 
 import "./Analysis.css";
+import Statistic from "./Statistic";
 import Variable from "./Variable";
 
 function Analysis(props) {
+  const [hidden, setHidden] = useState(false);
   const [independentVariables, setIndependentVariables] = useState([]);
   const [dependentVariables, setDependentVariables] = useState([]);
-  const [hidden, setHidden] = useState(false);
+  const [statistics, setStatistics] = useState([]);
 
   const toggleHidden = () => {
     if (hidden) setHidden(false);
@@ -26,7 +28,7 @@ function Analysis(props) {
   const deleteIndependentVariable = (id) => {
     const newVariables = [];
     for (var i = 0; i < independentVariables.length; i++) {
-      if (independentVariables[i].id != id) {
+      if (independentVariables[i].id !== id) {
         newVariables.push(independentVariables[i]);
       }
     }
@@ -45,11 +47,30 @@ function Analysis(props) {
   const deleteDependentVariable = (id) => {
     const newVariables = [];
     for (var i = 0; i < dependentVariables.length; i++) {
-      if (dependentVariables[i].id != id) {
+      if (dependentVariables[i].id !== id) {
         newVariables.push(dependentVariables[i]);
       }
     }
     setDependentVariables(newVariables);
+  };
+
+  const addStatistic = () => {
+    var newID;
+    if (statistics.length === 0) newID = 0;
+    else newID = statistics[statistics.length - 1].id + 1;
+    const newStatistic = { id: newID, data: {} };
+    const newStatistics = [...statistics, newStatistic];
+    setStatistics(newStatistics);
+  };
+
+  const deleteStatistic = (id) => {
+    const newStatistics = [];
+    for (var i = 0; i < statistics.length; i++) {
+      if (statistics[i].id !== id) {
+        newStatistics.push(statistics[i]);
+      }
+    }
+    setStatistics(newStatistics);
   };
 
   return (
@@ -131,6 +152,31 @@ function Analysis(props) {
               onClick={() => addDependentVariable()}
             >
               + Add dependent variable
+            </button>
+          </div>
+          <div className="variablesdiv">
+            <h5 className="subtitle" id="iv-title">
+              Statistics:
+            </h5>
+            {statistics.length === 0 ? (
+              <small className="no-variable-warning">No statistic added</small>
+            ) : (
+              statistics.map((s) => {
+                return (
+                  <Statistic
+                    key={s.id}
+                    id={s.id}
+                    deleteFunc={deleteStatistic}
+                  />
+                );
+              })
+            )}
+            <button
+              className="add-method-button"
+              id="add-independent-variable-button"
+              onClick={() => addStatistic()}
+            >
+              + Add statistic
             </button>
           </div>
         </div>

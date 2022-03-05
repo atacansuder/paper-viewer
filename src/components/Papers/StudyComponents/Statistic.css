@@ -1,0 +1,35 @@
+.Statistic {
+  margin-top: 5px;
+}
+
+.Statistic-titlediv {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+}
+
+#variable-delete-button {
+  height: 15px;
+  width: 15px;
+}
+
+#statistic-nr {
+  width: 50px;
+}
+
+#statistic-name {
+  width: 150px;
+}
+
+#statistic-for {
+  width: 150px;
+}
+
+.statistic-inputdiv {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+
+  align-items: center;
+}
