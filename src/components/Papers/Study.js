@@ -12,6 +12,7 @@ function Study(props) {
   const [participants, setParticipants] = useState([]);
   const [qualitativeResults, setQualitataiveResults] = useState([]);
   const [quantitativeResults, setQuantitativeResults] = useState([]);
+  const [study, setStudy] = useState({});
 
   const toggleHidden = () => {
     if (hidden) setHidden(false);
@@ -100,6 +101,10 @@ function Study(props) {
     );
     i++;
   }
+
+  const updateData = (d) => {
+    setStudy(d);
+  };
 
   return (
     <div className="Study">

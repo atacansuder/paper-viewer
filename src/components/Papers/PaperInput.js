@@ -9,6 +9,10 @@ import Studies from "./Studies";
 function PaperInput() {
   const [paper, setPaper] = useState({});
 
+  const updatePaper = (data) => {
+    setPaper(data);
+  };
+
   return (
     <div className="PaperInput">
       <div className="basic-inputs">
@@ -20,6 +24,11 @@ function PaperInput() {
               type="text"
               placeholder="Enter paper title..."
               id="title-input"
+              onChange={(e) => {
+                const newPaper = paper;
+                newPaper.title = e.target.value;
+                setPaper(paper);
+              }}
             />
           </label>
         </div>
@@ -33,6 +42,11 @@ function PaperInput() {
               min="1900"
               max="2100"
               placeholder="2022"
+              onChange={(e) => {
+                const newPaper = paper;
+                newPaper.year = e.target.value;
+                setPaper(paper);
+              }}
             />
           </div>
           <div className="inputdiv" id="rsquestions">
@@ -41,18 +55,29 @@ function PaperInput() {
               type="text"
               id="rsquestions-input"
               placeholder="Question 1; Question 2; Question 3; ..."
+              onChange={(e) => {
+                const questions = e.target.value.split(";");
+                for (var i = 0; i < questions.length; i++)
+                  questions[i] = questions[i].trim();
+                const newPaper = paper;
+                newPaper.research_questions = questions;
+                setPaper(newPaper);
+              }}
             />
           </div>
         </div>
       </div>
       <div>
         <h2 className="divtitle">Authors</h2>
-        <AuthorInput />
+        <AuthorInput paperData={paper} updateFunc={updatePaper} />
       </div>
       <div>
         <h2 className="divtitle">Studies</h2>
         <Studies />
       </div>
+      <button onClick={() => console.log(JSON.stringify(paper))}>
+        Print paper
+      </button>
     </div>
   );
 }

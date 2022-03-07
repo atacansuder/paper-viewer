@@ -10,7 +10,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import PaperAddAuthor from "./PaperAddAuthor";
 import AuthorItem from "./AuthorItem";
 
-function AuthorInput() {
+function AuthorInput(props) {
   const [authors, setAuthors] = useState([]);
   const [addedAuthors, setAddedAuthors] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -52,7 +52,6 @@ function AuthorInput() {
   };
 
   const addAuthor = (data) => {
-    console.log(data);
     for (var i = 0; i < addedAuthors.length; i++) {
       if (addedAuthors[i].id === data.id) {
         alert("ERROR: Author is already added.");
@@ -61,7 +60,10 @@ function AuthorInput() {
     }
     const newAuthors = [...addedAuthors, data];
     setAddedAuthors(newAuthors);
-    console.log("Author " + data.fullname + " successfully added.");
+
+    const newPaper = props.paperData;
+    newPaper.authors = getAuthorIDs(newAuthors);
+    props.updateFunc(newPaper);
   };
 
   const deleteAuthor = (id) => {
@@ -71,7 +73,18 @@ function AuthorInput() {
         newAuthors.push(addedAuthors[i]);
       }
     }
+
     setAddedAuthors(newAuthors);
+
+    const newPaper = props.paperData;
+    newPaper.authors = getAuthorIDs(newAuthors);
+    props.updateFunc(newPaper);
+  };
+
+  const getAuthorIDs = (arr) => {
+    const ids = [];
+    for (var j = 0; j < arr.length; j++) ids.push(arr[j].id);
+    return ids;
   };
 
   return (
