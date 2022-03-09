@@ -73,9 +73,9 @@ function PaperInput() {
       </div>
       <div>
         <h2 className="divtitle">Studies</h2>
-        <Studies />
+        <Studies paperData={paper} updateFunc={updatePaper} />
       </div>
-      <button onClick={() => console.log(JSON.stringify(paper))}>
+      <button onClick={() => console.log(JSON.stringify(paper, null, 2))}>
         Print paper
       </button>
     </div>

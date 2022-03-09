@@ -1,0 +1,36 @@
+.AnalysisMethod {
+  background-color: white;
+  border: 1px solid darkgray;
+  align-self: center;
+  margin-top: 10px;
+}
+
+#add-independent-variable-button {
+  width: 200px;
+  background-color: rgb(7, 82, 154);
+}
+
+.variablesdiv {
+  margin-top: 10px;
+}
+
+.subdiv {
+  margin-left: 5px;
+}
+
+.subtitle {
+  text-decoration: underline;
+}
+
+.no-variable-warning {
+  font-weight: bold;
+  color: red;
+}
+
+.analysismethod-titlediv {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  margin-top: 5px;
+}

@@ -9,7 +9,6 @@ import QuantitativeResult from "./StudyComponents/QuantitativeResult";
 
 function Study(props) {
   const [hidden, setHidden] = useState(false);
-  const [participants, setParticipants] = useState([]);
   const [qualitativeResults, setQualitataiveResults] = useState([]);
   const [quantitativeResults, setQuantitativeResults] = useState([]);
   const [study, setStudy] = useState({});
@@ -19,91 +18,63 @@ function Study(props) {
     else setHidden(true);
   };
 
-  const addParticipant = () => {
-    const part = { id: 0, amount: 0, name: "name" };
-    var newParticipants = [...participants, part];
-    newParticipants = updateParticipantIDs(newParticipants);
-    setParticipants(newParticipants);
-  };
-
-  const deleteParticipant = (id) => {
-    const newParticipants = [];
-    for (var i = 0; i < participants.length; i++) {
-      if (participants[i].id != id) {
-        newParticipants.push(participants[i]);
-      }
-    }
-    setParticipants(newParticipants);
-  };
-
-  const updateParticipantIDs = (p) => {
-    for (var i = 0; i < p.length; i++) {
-      p[i].id = i;
-    }
-    return p;
-  };
-
   const addQualitativeResult = () => {
     var newID;
     if (qualitativeResults.length === 0) newID = 0;
     else newID = qualitativeResults[qualitativeResults.length - 1].id + 1;
-    const newResult = { id: newID, data: {} };
+    const newResult = { id: newID };
     const newResults = [...qualitativeResults, newResult];
     setQualitataiveResults(newResults);
+
+    const newPaper = props.paperData;
+    newPaper.studies[props.id].qualitative_results = newResults;
+    props.updateFunc(newPaper);
   };
 
   const deleteQualitativeResult = (id) => {
-    const newResults = [];
+    var newResults = [];
     for (var i = 0; i < qualitativeResults.length; i++) {
       if (qualitativeResults[i].id != id) {
         newResults.push(qualitativeResults[i]);
       }
     }
+    newResults = updateIDs(newResults);
     setQualitataiveResults(newResults);
+
+    const newPaper = props.paperData;
+    newPaper.studies[props.id].qualitative_results = newResults;
+    props.updateFunc(newPaper);
   };
 
   const addQuantitativeResult = () => {
     var newID;
     if (quantitativeResults.length === 0) newID = 0;
     else newID = quantitativeResults[quantitativeResults.length - 1].id + 1;
-    const newResult = { id: newID, data: {} };
+    const newResult = { id: newID };
     const newResults = [...quantitativeResults, newResult];
     setQuantitativeResults(newResults);
+    const newPaper = props.paperData;
+    newPaper.studies[props.id].quantitative_results = newResults;
+    props.updateFunc(newPaper);
   };
 
   const deleteQuantitativeResult = (id) => {
-    const newResults = [];
+    var newResults = [];
     for (var i = 0; i < quantitativeResults.length; i++) {
       if (quantitativeResults[i].id != id) {
         newResults.push(quantitativeResults[i]);
       }
     }
+    newResults = updateIDs(newResults);
     setQuantitativeResults(newResults);
+    const newPaper = props.paperData;
+    newPaper.studies[props.id].quantitative_results = newResults;
+    props.updateFunc(newPaper);
   };
 
-  var resultsArray = [];
-  for (var i = 0; i < qualitativeResults.length; i++) {
-    resultsArray.push(
-      <QualitativeResult
-        key={qualitativeResults[i].id}
-        id={qualitativeResults[i].id}
-        deleteFunc={deleteQualitativeResult}
-      />
-    );
-  }
-  for (var j = 0; j < quantitativeResults.length; j++) {
-    resultsArray.push(
-      <QuantitativeResult
-        key={i + 1}
-        id={quantitativeResults[j].id}
-        deleteFunc={deleteQuantitativeResult}
-      />
-    );
-    i++;
-  }
-
-  const updateData = (d) => {
-    setStudy(d);
+  const updateIDs = (arr) => {
+    for (var i = 0; i < arr.length; i++) arr[i].id = i;
+    return arr;
   };
 
   return (
@@ -118,7 +89,11 @@ function Study(props) {
           >
             {hidden ? "+ Show" : "- Hide"}
           </button>
-          <button className="study-buttons" id="delete-button">
+          <button
+            className="study-buttons"
+            id="delete-button"
+            onClick={() => props.deleteFunc(props.id)}
+          >
             Delete
           </button>
         </div>
@@ -131,7 +106,36 @@ function Study(props) {
             quantitativeResults.length === 0 ? (
               <small className="participant-warning">No results</small>
             ) : (
-              resultsArray
+              <>
+                <>
+                  {qualitativeResults.map((r) => {
+                    return (
+                      <QualitativeResult
+                        key={r.id}
+                        id={r.id}
+                        deleteFunc={deleteQualitativeResult}
+                        updateFunc={props.updateFunc}
+                        paperData={props.paperData}
+                        studyID={props.id}
+                      />
+                    );
+                  })}
+                </>
+                <>
+                  {quantitativeResults.map((r) => {
+                    return (
+                      <QuantitativeResult
+                        key={r.id}
+                        id={r.id}
+                        deleteFunc={deleteQuantitativeResult}
+                        updateFunc={props.updateFunc}
+                        paperData={props.paperData}
+                        studyID={props.id}
+                      />
+                    );
+                  })}
+                </>
+              </>
             )}
           </div>
           <div className="study-add-resultsdiv">

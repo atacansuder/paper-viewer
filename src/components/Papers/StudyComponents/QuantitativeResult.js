@@ -14,38 +14,71 @@ function QuantitativeResult(props) {
     var newID;
     if (dataCollectionMethods.length === 0) newID = 0;
     else newID = dataCollectionMethods[dataCollectionMethods.length - 1].id + 1;
-    const newMethod = { id: newID, data: {} };
-    const newMethods = [...dataCollectionMethods, newMethod];
+    const newMethod = { id: newID };
+    var newMethods = [...dataCollectionMethods, newMethod];
+    newMethods = updateIDs(newMethods);
     setDataCollectionMethods(newMethods);
+
+    const newPaper = props.paperData;
+    newPaper.studies[props.studyID].quantitative_results[
+      props.id
+    ].data_collection_methods = newMethods;
+    props.updateFunc(newPaper);
   };
 
   const deleteMethod = (id) => {
-    const newMethods = [];
+    var newMethods = [];
     for (var i = 0; i < dataCollectionMethods.length; i++) {
       if (dataCollectionMethods[i].id != id) {
         newMethods.push(dataCollectionMethods[i]);
       }
     }
+    newMethods = updateIDs(newMethods);
     setDataCollectionMethods(newMethods);
+
+    const newPaper = props.paperData;
+    newPaper.studies[props.studyID].quantitative_results[
+      props.id
+    ].data_collection_methods = newMethods;
+    props.updateFunc(newPaper);
   };
 
   const addAnalysis = () => {
     var newID;
     if (analysisResults.length === 0) newID = 0;
     else newID = analysisResults[analysisResults.length - 1].id + 1;
-    const newResult = { id: newID, data: {} };
-    const newResults = [...analysisResults, newResult];
+    const newResult = { id: newID };
+    var newResults = [...analysisResults, newResult];
+    newResults = updateIDs(newResults);
     setAnalysisResults(newResults);
+
+    const newPaper = props.paperData;
+    newPaper.studies[props.studyID].quantitative_results[
+      props.id
+    ].data_analysis_results = newResults;
+    props.updateFunc(newPaper);
   };
 
   const deleteAnalysis = (id) => {
-    const newResults = [];
+    var newResults = [];
     for (var i = 0; i < analysisResults.length; i++) {
       if (analysisResults[i].id != id) {
         newResults.push(analysisResults[i]);
       }
     }
+    newResults = updateIDs(newResults);
     setAnalysisResults(newResults);
+
+    const newPaper = props.paperData;
+    newPaper.studies[props.studyID].quantitative_results[
+      props.id
+    ].data_analysis_results = newResults;
+    props.updateFunc(newPaper);
+  };
+
+  const updateIDs = (arr) => {
+    for (var i = 0; i < arr.length; i++) arr[i].id = i;
+    return arr;
   };
 
   return (
@@ -67,7 +100,15 @@ function QuantitativeResult(props) {
         ) : (
           dataCollectionMethods.map((m) => {
             return (
-              <DataCollection key={m.id} id={m.id} deleteFunc={deleteMethod} />
+              <DataCollection
+                key={m.id}
+                id={m.id}
+                deleteFunc={deleteMethod}
+                studyID={props.studyID}
+                updateFunc={props.updateFunc}
+                paperData={props.paperData}
+                resultID={props.id}
+              />
             );
           })
         )}
@@ -82,11 +123,21 @@ function QuantitativeResult(props) {
       <div className="data-collectiondiv">
         <h4 id="data-collection-title">Data analysis results</h4>
         {analysisResults.length === 0 ? (
-          <small>No analysis results added</small>
+          <small className="no-variable-warning">
+            No analysis results added
+          </small>
         ) : (
           analysisResults.map((a) => {
             return (
-              <Analysis key={a.id} id={a.id} deleteFunc={deleteAnalysis} />
+              <Analysis
+                key={a.id}
+                id={a.id}
+                deleteFunc={deleteAnalysis}
+                studyID={props.studyID}
+                updateFunc={props.updateFunc}
+                paperData={props.paperData}
+                resultID={props.id}
+              />
             );
           })
         )}

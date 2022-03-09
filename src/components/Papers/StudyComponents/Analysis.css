@@ -15,40 +15,40 @@
   align-items: center;
 
   padding-right: 5px;
+
+  margin-bottom: 20px;
+  margin-left: 5px;
+}
+
+.Analysis-titlediv-hidden {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  padding-right: 5px;
 }
 
 .analysis-title {
   margin: 0;
-  margin-top: 10px;
-  margin-bottom: 15px;
   text-decoration: underline;
 }
 
 .analysis-field {
   display: grid;
   margin-top: -10px;
+  margin-left: 5px;
   gap: 5px;
 }
 
-#add-independent-variable-button {
+#add-analysis-method-button {
   width: 200px;
   background-color: rgb(7, 82, 154);
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-left: 5px;
 }
 
-.variablesdiv {
-  margin-top: 10px;
-}
-
-#iv-title {
-  margin-bottom: 5px;
-}
-
-.subtitle {
-  text-decoration: underline;
-}
-
-.no-variable-warning {
-  font-weight: bold;
-  color: red;
+.amdiv {
+  margin-left: 5px;
+  margin-right: 5px;
 }
