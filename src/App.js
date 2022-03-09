@@ -21,14 +21,13 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="paper-viewer/" element={<MainScreen />} />
-        <Route path="paper-viewer/paper-viewer" element={<MainScreen />} />
-        <Route path="paper-viewer/authors" element={<AuthorsScreen />} />
+        <Route path="/paper-viewer" element={<MainScreen />} />
+        <Route path="/paper-viewer/authors" element={<AuthorsScreen />} />
         <Route
-          path="paper-viewer/authors/:author_id"
+          path="/paper-viewer/authors/:author_id"
           element={<AuthorPage />}
         />
-        <Route path="paper-viewer/papers" element={<PaperScreen />} />
+        <Route path="/paper-viewer/papers" element={<PaperScreen />} />
       </Routes>
       <Footer />
     </div>

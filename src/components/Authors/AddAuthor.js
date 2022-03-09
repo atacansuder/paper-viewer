@@ -1,6 +1,6 @@
 import React from "react";
 import { MdAdd, MdRemove } from "react-icons/md";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
 import "./AddAuthor.css";
 

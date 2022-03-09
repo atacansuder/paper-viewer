@@ -1,9 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import db from "../../firebase";
-import { collection, getDoc } from "firebase/firestore";
-
 import "./AuthorsScreen.css";
 
 import Authors from "./Authors";

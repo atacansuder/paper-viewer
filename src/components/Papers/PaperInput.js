@@ -6,11 +6,12 @@ import "./PaperInput.css";
 import AuthorInput from "./AuthorInput";
 import Studies from "./Studies";
 
-function PaperInput() {
+function PaperInput(props) {
   const [paper, setPaper] = useState({});
 
   const updatePaper = (data) => {
     setPaper(data);
+    props.updatePaper(data);
   };
 
   return (
@@ -27,7 +28,7 @@ function PaperInput() {
               onChange={(e) => {
                 const newPaper = paper;
                 newPaper.title = e.target.value;
-                setPaper(paper);
+                updatePaper(paper);
               }}
             />
           </label>
@@ -45,7 +46,7 @@ function PaperInput() {
               onChange={(e) => {
                 const newPaper = paper;
                 newPaper.year = e.target.value;
-                setPaper(paper);
+                updatePaper(paper);
               }}
             />
           </div>
