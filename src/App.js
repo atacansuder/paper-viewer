@@ -20,7 +20,6 @@ import AuthorPage from "./components/Authors/AuthorPage";
 function App() {
   return (
     <div className="App">
-      <h1>Work in progress!</h1>
       <Routes>
         <Route path="paper-viewer/" element={<MainScreen />} />
         <Route path="paper-viewer/paper-viewer" element={<MainScreen />} />

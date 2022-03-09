@@ -43,7 +43,7 @@ function Variable(props) {
         props.resultID
       ].data_analysis_results[props.analysisID].analysis_methods[
         props.methodID
-      ].dependent_variables[props.id].levels = levels;
+      ].independent_variables[props.id].levels = levels;
     } else {
       newPaper.studies[props.studyID].quantitative_results[
         props.resultID

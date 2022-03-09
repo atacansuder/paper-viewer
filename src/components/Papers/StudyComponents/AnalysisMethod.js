@@ -122,6 +122,15 @@ function AnalysisMethod(props) {
     props.updateFunc(newPaper);
   };
 
+  const updateNotes = (e) => {
+    const newPaper = props.paperData;
+    newPaper.studies[props.studyID].quantitative_results[
+      props.resultID
+    ].data_analysis_results[props.analysisID].analysis_methods[props.id].notes =
+      e.target.value;
+    props.updateFunc(newPaper);
+  };
+
   const updateIDs = (arr) => {
     for (var i = 0; i < arr.length; i++) arr[i].id = i;
     return arr;
@@ -237,6 +246,18 @@ function AnalysisMethod(props) {
         >
           + Add statistic
         </button>
+      </div>
+      <div className="subdiv">
+        <h5 className="subtitle" id="iv-title">
+          Additional notes:
+        </h5>
+        <textarea
+          name="notes"
+          id="notes-textarea"
+          cols="53"
+          rows="2"
+          onChange={(e) => updateNotes(e)}
+        ></textarea>
       </div>
     </div>
   );
