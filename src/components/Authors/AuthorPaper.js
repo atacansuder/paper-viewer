@@ -37,6 +37,9 @@ function AuthorPaper(props) {
     await updateDoc(doc(db, "authors", props.authorID), {
       paper_ids: arrayRemove(props.paperID),
     });
+    await updateDoc(doc(db, "papers", props.paperID), {
+      authors: arrayRemove(props.authorID),
+    });
     alert('The paper "' + paperData.title + '" has been successfully deleted.');
     props.fetchFunc();
   };

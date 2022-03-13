@@ -37,6 +37,9 @@ function AuthorPaperItem(props) {
       paper_ids: arrayUnion(props.data.id),
       [`paper_objects.${props.data.id}`]: props.data,
     });
+    await updateDoc(doc(db, "papers", props.data.id), {
+      authors: arrayUnion(props.author_id),
+    });
     props.fetchFunc();
     setAdded(true);
   };

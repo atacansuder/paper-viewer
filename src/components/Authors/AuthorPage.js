@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 
 import "./AuthorPage.css";
@@ -95,6 +95,12 @@ function AuthorPage() {
             parsePapers()
           )}
         </div>
+      </div>
+      <div>
+        <Link to="/paper-viewer">
+          <br />
+          <button>Back to main screen</button>
+        </Link>
       </div>
     </div>
   );

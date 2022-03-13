@@ -39,27 +39,21 @@ function PaperScreen() {
       alert(warningMsg);
     }
 
+    paper.title_insensitive = paper.title.toLowerCase();
+
     const docRef = await addDoc(collection(db, "papers"), paper);
 
     await updateDoc(docRef, {
       id: docRef.id,
     });
 
-    for (var i = 0; i < authors.length; i++) {
-      await updateDoc(doc(db, "authors", authors[i]), {
-        paper_ids: arrayUnion(docRef.id),
-        [`paper_objects.${docRef.id}`]: paper,
-      });
-
-      /*
-      const q = query(collection(db, "authors"), where("id", "==", authors[i]));
-      const querySnapshot = await getDocs(q);
-      for (var j = 0; j < querySnapshot.length; j++) {
-        await updateDoc(querySnapshot[j], {
-          paper_ids: arrayUnion(paper.id),
-          [`paper_objects.${paper.id}`]: paper,
+    if (authors !== undefined && authors.length > 0) {
+      for (var i = 0; i < authors.length; i++) {
+        await updateDoc(doc(db, "authors", authors[i]), {
+          paper_ids: arrayUnion(docRef.id),
+          [`paper_objects.${docRef.id}`]: paper,
         });
-      }*/
+      }
     }
 
     setUploaded(true);
@@ -87,7 +81,7 @@ function PaperScreen() {
             onClick={(e) => uploadPaper(e)}
           >
             <MdUpload size={20} />
-            {"Upload paper"}
+            {"Save into database"}
           </button>
         )}
       </div>
